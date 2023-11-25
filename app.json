@@ -2,6 +2,11 @@
   "expo": {
     "name": "momentum-c-app",
     "slug": "momentum-c-app",
+    "permissions": [
+      "INTERNET",
+      "ACCESS_NETWORK_STATE", 
+      "ACCESS_WIFI_STATE"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
