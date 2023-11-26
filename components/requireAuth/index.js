@@ -1,28 +1,37 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/reducers/tokenReducer";
 import { setActiveScreen } from "../../redux/reducers/activeScreenReducer";
 import { Routes } from "../../constants";
+import { getAccessToken } from "../../utils";
+import { tokenThunkLogout } from "../../redux/thunk/tokenThunk";
+import { View } from "react-native";
+import { logoutUser } from '../../network';
+import { setIsOpen } from '../../redux/reducers/menuReducer';
 
-export const RequireAuth = () => {
-    const { isAdmin, isRegularUser } = useSelector((state) => state.token);
-    const dispatch = useDispatch();
+export const RequireAuth = ({ children }) => {
+  const { isAdmin, isRegularUser, accessToken: token } = useSelector((state) => state.token);
+  const dispatch = useDispatch();
 
-    const storage = async()=>{
-        return await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
-    }
-  
-    const isAuthenticated = isRegularUser || isAdmin || !!storage();
-  
-    useEffect(() => {
+
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      const accessToken = await getAccessToken(token);
+      const isAuthenticated = isRegularUser || isAdmin || !!accessToken;
       if (!isAuthenticated) {
-        dispatch(logout());
+        logoutUser(accessToken);
+        await dispatch(tokenThunkLogout());
         dispatch(setActiveScreen(Routes.ENTRANCE));
         dispatch(setIsOpen(false));
       }
-    }, [isAuthenticated, dispatch]);
-  
-    return (
-       <></>
-    );
-  };
+    }
+    checkAuthentication();
+
+  }, [isRegularUser]);
+
+  return (
+    <View>
+      {children}
+    </View>
+  );
+};

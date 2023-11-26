@@ -23,7 +23,7 @@ const TotalBought = () => {
 const styles = StyleSheet.create({
   totalBoughtPosition: {
     position: 'relative',
-    top: 150,
+    top: -12,
     right: 0,
     width: 358,
     height: 167,
@@ -38,12 +38,13 @@ const styles = StyleSheet.create({
     color: '#FFF',
     textAlign: 'center',
     fontSize: 24,
-    top: 0,
+    top: -4,
   },
   totalBoughtContent: {
     color: '#FFF',
     top: 0,
     fontSize: 45,
+    top: 10,
     fontWeight: '400',
   },
 });

@@ -18,7 +18,7 @@ const VideosSlider = ({ setIndexSells, setSellsPopupOpen, indexSells }) => {
     };
 
     const renderVideos = () => (
-        <ScrollView contentContainerStyle={styles.videosSections} horizontal={true}>
+        <ScrollView contentContainerStyle={styles.videosSections}>
             {videosFromStore.map(({ title, link, _id, photoLink }, index) => (
                 index !== selectedIndexFromStore && (
                     <TouchableOpacity key={_id} onPress={() => handleSelectVideoMobile(index)}>
@@ -39,28 +39,23 @@ const VideosSlider = ({ setIndexSells, setSellsPopupOpen, indexSells }) => {
 
 const styles = StyleSheet.create({
     videosSlider: {
-        flexDirection: 'row',
+        top: 40,
+        flex: 1
     },
     videosSections: {
-        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 70,
-        marginTop: 300,
-        overflowY: 'auto',
-        height: 1400,
+        gap: 40,
+
     },
     videoPosition: {
         width: 290,
         height: 180,
-        flexShrink: 0,
     },
     videoSliderTitle: {
-        width: 263,
         color: '#000',
         textAlign: 'center',
-        marginTop: -10,
-        fontFamily: 'Open Sans',
+        marginTop: 10,
         fontSize: 24,
         fontWeight: '400',
     },

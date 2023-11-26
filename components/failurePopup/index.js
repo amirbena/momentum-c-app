@@ -15,7 +15,7 @@ const FailurePopup = () => {
         <Popup
             visible={isOpen}
             onClose={() => dispatch(setNoAuthPopupOpen(false))}
-            showClose={false}
+            showClose
         >
             <Text style={styles.text}>{t('failurePopup.text')}</Text>
         </Popup>

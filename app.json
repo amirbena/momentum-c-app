@@ -1,12 +1,7 @@
 {
   "expo": {
     "name": "momentum-c-app",
-    "slug": "momentum-c-app",
-    "permissions": [
-      "INTERNET",
-      "ACCESS_NETWORK_STATE", 
-      "ACCESS_WIFI_STATE"
-    ],
+    "slug": "momentumc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,16 +15,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.amirbena12049818.momentumc"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.amirbena12049818.momentumc"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1c4d370d-8df8-4422-a0ff-dcb2edc9077b"
+      }
+    },
+    "owner": "amirbena12049818"
   }
 }

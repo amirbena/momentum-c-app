@@ -1,22 +1,28 @@
 import React from 'react';
-import { View, Modal, StyleSheet, Image } from 'react-native';
+import { View, Modal, StyleSheet, Image,TouchableOpacity } from 'react-native';
 import { BackgroundImage } from 'react-native-elements/dist/config';
 
 const Popup = ({ children, isDisabled, visible, onClose, showClose }) => {
 
   return (
-    <Modal visible={visible} transparent>
-      <BackgroundImage source={require("../../images/popupbackground.png")}  style={styles.container}>
-          <View style={styles.innerContainer}>
-            {showClose && (
-              <Image
-                style={styles.closeIcon}
-                source={require('../../images/CloseIcon.png')}
-                onPress={onClose}
-              />
-            )}
-            <View style={styles.content}>{children}</View>
-          </View>
+    <Modal visible={visible} transparent onRequestClose={onClose}>
+      <BackgroundImage source={require("../../images/popupbackground.png")} style={styles.container}>
+        <View style={styles.innerContainer}>
+          {showClose && (
+            <>
+              <TouchableOpacity onPress={onClose}>
+                <Image
+                  style={styles.closeIcon}
+                  source={require('../../images/CloseIcon.png')}
+                  onPress={onClose}
+                />
+              </TouchableOpacity>
+
+            </>
+          )}
+
+          <View style={styles.content}>{children}</View>
+        </View>
       </BackgroundImage>
     </Modal>
   );
@@ -25,26 +31,29 @@ const Popup = ({ children, isDisabled, visible, onClose, showClose }) => {
 const styles = StyleSheet.create({
 
   container: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.25)',
+    alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 250,
+    width: 300,
+    borderRadius: 32,
+    height: 250
   },
 
   innerContainer: {
-    width: 346,
-    height: 254,
+    width: 270,
+    height: 184,
     borderRadius: 32,
     alignItems: 'center',
     backgroundColor: 'white'
   },
 
   closeIcon: {
-    width: 20,
-    height: 20,
-    position: 'absolute',
-    top: 12,
-    right: 16
+    right: -130,
+    bottom: 30,
+    width: 30,
+    height: 30,
+    color: 'red'
   },
 
   content: {

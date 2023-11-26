@@ -61,7 +61,7 @@ const PopupMessages = () => {
   };
 
   return (
-    <Popup isOpen={isMessagingPopupOpen} setIsOpen={setIsOpen} hasX>
+    <Popup visible={isMessagingPopupOpen}  onClose={setIsOpen} showClose>
       <View style={styles.popupMessages}>
         <Text style={styles.popupMessagesTitle}>{title}</Text>
         <Text style={styles.popupMessageDescripition}>{description}</Text>
@@ -82,20 +82,16 @@ export const styles = StyleSheet.create({
   popupMessagesTitle: {
     color: 'black',
     textAlign: 'center',
-    fontFamily: 'Open Sans',
     fontSize: 36,
     fontStyle: 'normal',
-    fontWeight: '400',
-    lineHeight: 'normal',
+    fontWeight: '400'
   },
   popupMessageDescripition: {
     color: 'black',
     textAlign: 'center',
-    fontFamily: 'Open Sans',
     fontSize: 24,
     fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 'normal',
   },
   linkPosition: {
     marginTop: 65,
@@ -106,7 +102,6 @@ export const styles = StyleSheet.create({
   },
   popupMessagesHref: {
     textAlign: 'center',
-    fontFamily: 'Open Sans',
     fontSize: 24,
   },
   image: {

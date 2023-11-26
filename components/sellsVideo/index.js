@@ -7,10 +7,13 @@ import { SELLS_VIDEOS } from '../../constants';
 const SellsVideo = ({ open, setIsOpen, index }) => {
     const video = SELLS_VIDEOS[index];
 
-    if (!video) return null;
+    if (!video){
+        setIsOpen(false);
+        return null;
+    }
 
     return (
-        <Popup isOpen={open} setIsOpen={setIsOpen}>
+        <Popup visible={open} onClose={setIsOpen}>
             <View style={styles.sellsVideo}>
                 <WebView
                     style={styles.iframe}

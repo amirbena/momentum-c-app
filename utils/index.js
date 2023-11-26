@@ -69,5 +69,7 @@ export const getOrigin = () => {
 }
 
 export const getAccessToken = async tokenAccessToken => {
-    return tokenAccessToken || await AsyncStorage.getItem(ACCESS_TOKEN_KEY);
+    if (tokenAccessToken) return tokenAccessToken;
+    const storageToken = await AsyncStorage.getItem(ACCESS_TOKEN_KEY)
+    return storageToken || "";
 }

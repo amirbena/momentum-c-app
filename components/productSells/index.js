@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import BlueSquare from '../blueSquare';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const ProductSells = () => {
   const { t } = useTranslation();
 
-  //TODO: EXTRACT EXACT NEW PRICES FROM SLICE
 
   const { sellsToday } = useSelector((state) => state.sells);
 
@@ -19,45 +19,53 @@ const ProductSells = () => {
           <Text style={styles.headerText}>{t('productSells.productName')}</Text>
           <Text style={styles.headerText}>{t('productSells.productPrice')}</Text>
         </View>
-        {sellsToday.map(({ sku, name, price }, index) => (
-          <View style={styles.tableRow} key={index}>
-            <Text style={styles.tableCell}>{sku}</Text>
-            <Text style={styles.tableCell}>{name}</Text>
-            <Text style={styles.tableCell}>{price}</Text>
+        <ScrollView>
+          {sellsToday.map(({ sku, name, price }, index) => (
+            <View style={styles.tableRow} key={index}>
+              <Text style={styles.tableCell}>{sku}</Text>
+              <Text style={styles.tableCell}>{name}</Text>
+              <Text style={styles.tableCell}>{price}</Text>
+            </View>
+          ))}
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell}>fkfk</Text>
+            <Text style={styles.tableCell}>ddkdk</Text>
+            <Text style={styles.tableCell}>kfkf</Text>
           </View>
-        ))}
+        </ScrollView>
       </View>
     </BlueSquare>
   );
 };
 
-const styles = {
+export const styles = StyleSheet.create({
   productSellsPosition: {
     width: 358,
     height: 349,
     flexShrink: 0,
     marginTop: 200,
+    bottom: 190,
     marginRight: 0,
-    paddingBottom: 40,
+    paddingBottom: 20,
+    overflow: 'scroll'
   },
   productSellsTablePosition: {
     position: 'relative',
     right: 0,
-    borderWidth: 1,
-    borderColor: '#FFF',
-    borderRadius: 5,
     overflow: 'hidden',
+    direction: 'rtl'
   },
   tableHeader: {
     flexDirection: 'row',
-    backgroundColor: '#000',
     justifyContent: 'space-between',
     paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#FFF',
   },
   headerText: {
     color: '#FFF',
     textAlign: 'center',
-    fontFamily: 'Open Sans',
     fontSize: 18,
     fontWeight: '400',
   },
@@ -67,14 +75,14 @@ const styles = {
     borderBottomWidth: 1,
     borderBottomColor: '#FFF',
     paddingVertical: 8,
+    paddingHorizontal: 10
   },
   tableCell: {
     color: '#FFF',
     textAlign: 'center',
-    fontFamily: 'Open Sans',
     fontSize: 16,
     fontWeight: '400',
   },
-};
+});
 
 export default ProductSells;

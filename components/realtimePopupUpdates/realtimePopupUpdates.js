@@ -61,7 +61,7 @@ export const RealTimePopupUpdates = () => {
         };
 
         return (
-            <Popup isOpen={isPopupQueueOpen} setIsOpen={() => { }} hasX>
+            <Popup visible={isPopupQueueOpen} onClose={() =>{}} showClose>
                 <View style={styles.popupMessages}>
                     <Text style={styles.popupMessagesTitle}>{title}</Text>
                     <Text style={styles.popupMessageDescripition}>{description}</Text>

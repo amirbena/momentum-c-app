@@ -8,9 +8,9 @@ import { setIsLoading } from "../../redux/reducers/isLoadingReducer";
 import { userLoginThunk } from '../../redux/thunk/loginThunk';
 import { setIsAdmin, setIsEmployee } from '../../redux/reducers/tokenReducer';
 import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
-import { ImageBackground, Keyboard, StyleSheet, View } from 'react-native';
+import { ImageBackground, Keyboard, StyleSheet, TouchableHighlight, View } from 'react-native';
 import { styles as registerStyles } from '../register/register';
-import { Image, Text } from 'react-native-elements';
+import { Button, Image, Text } from 'react-native-elements';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 const Login = () => {
@@ -87,8 +87,7 @@ const Login = () => {
         return options[id]();
     }
 
-    const handleBlur = e => {
-        const { id, value } = e.target;
+    const handleBlur = (id, value) => {
         const { isValid, text } = validateInput(id, value);
         setInputErrors(inputErrors => ({
             ...inputErrors,
@@ -159,9 +158,7 @@ const Login = () => {
             <Image source={require("../../images/person.png")} style={registerStyles.icon} />
             <View style={showError ? styles.boxError : styles.box}>
                 <Text style={registerStyles.boxHeader}>{t('login.header')}</Text>
-                <TouchableOpacity style={styles.registerNavigate} onPress={navigateToRegister}>
-                    <Text style={styles.registerNavigateText}>{t('register.navigateToLogin')}</Text>
-                </TouchableOpacity>
+                <Text onPress={navigateToRegister} style={styles.registerNavigateText}>{t('register.navigateToLogin')}</Text>                    
                 <View style={styles.formLayout}>
                     {inputs.map(({ id, placeholder, value, type }) => (
                         <>
@@ -170,7 +167,7 @@ const Login = () => {
                                     style={registerStyles.input}
                                     value={value}
                                     onChangeText={(text) => setLoginItem(id, text)}
-                                    onBlur={() => handleBlur(id, value)}
+                                    onBlur={e => handleBlur(id, e.nativeEvent.text)}
                                     placeholder={t(`login.${placeholder}Placeholder`)}
                                     secureTextEntry={type === 'password'}
                                 />
@@ -180,7 +177,7 @@ const Login = () => {
                     ))}
                 </View>
 
-
+                <Text onPress={navigateToForgotPassword} style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
                 <TouchableOpacity
                     style={enabledButton ? styles.confirmButton : styles.confirmButtonDisabled}
                     onPress={handleClick}
@@ -198,7 +195,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     box: {
         width: 352,
-        height: 455,
+        height: 315,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -206,11 +203,17 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.10,
         shadowRadius: 10,
-        marginTop: 10,
+        marginTop: 30,
+    },
+    errorMessage: {
+        color: 'brown',
+        top: -20,
+        marginBottom: -10,
+        left: 86
     },
     boxError: {
         width: 352,
-        height: 475,
+        height: 335,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -218,18 +221,13 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.10,
         shadowRadius: 10,
-        marginTop: 10,
+        marginTop: 30,
     },
     formLayout: {
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
-        top: 40,
-    },
-    registerNavigate: {
-        left: 240,
-        top: -30,
-        width: 90,
+        top: 20,
     },
     registerNavigateText: {
         color: 'white',
@@ -237,7 +235,8 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         color: 'white',
         fontSize: 16,
-
+        right: 25,
+        top: -30,
     },
     confirmButton: {
         borderRadius: 8,
@@ -247,12 +246,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: 105,
+        top: -155,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 9,
         width: 300,
         left: 25
+    },
+    forgotPassword: {
+        color: '#FFF',
+        fontSize: 14,
+        fontWeight: '400',
+        textDecorationLine: 'underline',
+        left: 115,
+        top: 15
     },
     confirmButtonDisabled: {
         borderRadius: 8,
@@ -262,7 +269,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: 105,
+        top: 45,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 9,

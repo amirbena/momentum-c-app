@@ -10,7 +10,7 @@ const VideoPopup = ({ open, setIsOpen, video }) => {
     const embeddedVideo = `https://www.youtube.com/embed/${slice}`;
 
     return (
-        <Popup isOpen={open} setIsOpen={setIsOpen}>
+        <Popup visible={open} onClose={setIsOpen} showClose>
             <View style={styles.videoPopup}>
                 <WebView
                     style={styles.iframe}
@@ -24,12 +24,8 @@ const VideoPopup = ({ open, setIsOpen, video }) => {
 
 const styles = StyleSheet.create({
     videoPopup: {
-        marginLeft: 5,
     },
     iframe: {
-        marginTop: 20,
-        width: 220,
-        height: 165,
     },
 });
 

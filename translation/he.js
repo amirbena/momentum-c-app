@@ -40,7 +40,7 @@ export const he = {
         okMessage: 'משתמש התחבר בהצלחה'
     },
     forgotPassword: {
-        header: "....אל דאגה אנחנו נעזור לכם",
+        header: "אל דאגה אנחנו נעזור לכם....",
         navigateToLogin: 'חזרה',
         previewTextPart1: 'הכניסו את כתובת המייל שאיתה נרשמתם',
         previewTextPart2: 'ואנחנו נשלח לכם לינק לאיפוס הסיסמה',

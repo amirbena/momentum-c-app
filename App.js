@@ -14,6 +14,11 @@ import { getAccessToken } from "./utils";
 import Spinner from "react-native-loading-spinner-overlay";
 import Login from "./pages/login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ForgotPassword from "./pages/forgotPassword";
+import MainDashboard from "./pages/mainDashboard";
+import Videos from "./pages/videos";
+import { RequireAuth } from "./components/requireAuth";
+import NavigationPanel from "./components/navigationPanel";
 
 const RouterBuilder = () => {
   const { isLoading } = useSelector((state) => state.isLoading);
@@ -23,8 +28,7 @@ const RouterBuilder = () => {
 
   const dispatch = useDispatch();
 
-
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchToken = async () => {
       const accessToken = await getAccessToken(token);
       if (accessToken) {
@@ -34,16 +38,23 @@ const RouterBuilder = () => {
       }
     }
     fetchToken();
-  }, [token]); */
+  }, [token]);
+
 
 
   return (
     <>
-      {index === RoutesContants.ENTRANCE && <EntranceScreen />}
-      {index === RoutesContants.REGISTER && <Register />}
-      {index === RoutesContants.LOGIN && <Login/>}
+      {index === RoutesContants.ENTRANCE ? <EntranceScreen /> : <></>}
+      {index === RoutesContants.REGISTER ? <Register /> : <></>}
+      {index === RoutesContants.LOGIN ? <Login /> : <></>}
+      {index === RoutesContants.FORGOT_PASSWORD ? <ForgotPassword /> : <></>}
+      {index === RoutesContants.MAIN_DASHBOARD ? <RequireAuth><MainDashboard /></RequireAuth> : <></>}
+      {index === RoutesContants.VIDEOS_SECTION ? <RequireAuth><Videos /></RequireAuth> : <></>}
+      {
+        (index === RoutesContants.VIDEOS_SECTION || index === RoutesContants.MAIN_DASHBOARD) ? <NavigationPanel /> : <></>
+      }
       <Spinner
-         visible={isLoading}
+        visible={isLoading}
       />
     </>
 
