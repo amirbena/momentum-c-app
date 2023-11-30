@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Popup from '../popup';
-import { WebView } from 'react-native-webview';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 const VideoPopup = ({ open, setIsOpen, video }) => {
     if (!video) return null;
@@ -12,9 +12,11 @@ const VideoPopup = ({ open, setIsOpen, video }) => {
     return (
         <Popup visible={open} onClose={setIsOpen} showClose>
             <View style={styles.videoPopup}>
-                <WebView
-                    style={styles.iframe}
-                    source={{ uri: embeddedVideo }}
+                <YoutubePlayer
+                    height={200}
+                    width={280}
+                    play={true}
+                    videoId={slice}
                 />
             </View>
         </Popup>
@@ -24,8 +26,11 @@ const VideoPopup = ({ open, setIsOpen, video }) => {
 
 const styles = StyleSheet.create({
     videoPopup: {
+        alignSelf: 'center',
+        top: -20
     },
     iframe: {
+        top: 200
     },
 });
 

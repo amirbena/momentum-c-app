@@ -70,7 +70,7 @@ const Videos = () => {
             {link && <View>
                 <TouchableOpacity onPress={openVideo}>
                     <Image
-                        source={{ uri: link }}
+                        source={{ uri: photoLink }}
                         style={styles.currentVideo}
                     />
                     <Image source={require('../../images/Play.png')} style={styles.playIcon} />

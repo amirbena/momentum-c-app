@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 250,
-    width: 300,
+    width: 350,
     borderRadius: 32,
     height: 250
   },
 
   innerContainer: {
-    width: 270,
+    width: 320,
     height: 184,
     borderRadius: 32,
     alignItems: 'center',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
 
   closeIcon: {
-    right: -130,
+    right: -160,
     bottom: 30,
     width: 30,
     height: 30,
