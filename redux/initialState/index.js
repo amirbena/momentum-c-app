@@ -1,4 +1,4 @@
-import { VIDEOS_SECTIONS } from "../../constants";
+import { Routes, VIDEOS_SECTIONS } from "../../constants";
 
 export const initialState = {
     forgotPassword: {
@@ -26,7 +26,7 @@ export const initialState = {
         showError: false
     },
     activeScreen: {
-        index: 0
+        index: Routes.ENTRANCE,
     },
     management: {
         users: [], selectedValueToSort: '',

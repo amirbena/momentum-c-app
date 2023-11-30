@@ -17,8 +17,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import ForgotPassword from "./pages/forgotPassword";
 import MainDashboard from "./pages/mainDashboard";
 import Videos from "./pages/videos";
-import { RequireAuth } from "./components/requireAuth";
+import { RequireAuth } from "./components/requireAuth/index";
 import NavigationPanel from "./components/navigationPanel";
+import PopupMessages from "./components/popupMessages";
+import { RealTimePopupUpdates } from "./components/realtimePopupUpdates/realtimePopupUpdates";
+import FailurePopup from "./components/failurePopup";
 
 const RouterBuilder = () => {
   const { isLoading } = useSelector((state) => state.isLoading);
@@ -56,11 +59,13 @@ const RouterBuilder = () => {
       <Spinner
         visible={isLoading}
       />
+      <FailurePopup />
+      <PopupMessages />
+      <RealTimePopupUpdates />
     </>
 
   )
 };
-
 export default function App() {
   return (
     <Provider store={store}>

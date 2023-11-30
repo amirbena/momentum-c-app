@@ -12,6 +12,7 @@ import { userRegisterThunk } from '../../redux/thunk/registerThunk';
 import { setIsLoading } from '../../redux/reducers/isLoadingReducer';
 import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
 import { CheckBox } from 'react-native-elements';
+import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Register = () => {
 
     const [changedFirstTime, setChangeFirstTime] = useState(false);
 
-    
+
 
     const [inputErrorTexts, setInputErrorTexts] = useState({
         name: "",
@@ -171,7 +172,8 @@ const Register = () => {
         const result = await dispatch(userRegisterThunk({ fullName: name, email, password, phoneNumber: phone }));
         if (result) {
             initData();
-            dispatch(setActiveScreen(Routes.MAIN_DASHBOARD));
+            dispatch(setActiveScreen(Routes.VIDEOS_SECTION));
+            dispatch(setSelectedMobileSelection(t('menu.videosList')))
         }
     };
 

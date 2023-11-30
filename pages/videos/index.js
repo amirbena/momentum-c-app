@@ -60,7 +60,7 @@ const Videos = () => {
 
 
     return (
-        <ImageBackground style={styles.videosPage} source={require('../../images/videosBackground.png')}>
+        <ImageBackground style={styles.videosPage} source={require('../../images/VideosBackground.png')}>
             <Image style={styles.imagePosition} source={require('../../images/videosLogo.png')} />
             <View style={styles.logoutPosition}>
                 <TouchableOpacity onPress={handleLogout} >

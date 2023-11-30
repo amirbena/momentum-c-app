@@ -12,6 +12,7 @@ import { ImageBackground, Keyboard, StyleSheet, TouchableHighlight, View } from 
 import { styles as registerStyles } from '../register/register';
 import { Button, Image, Text } from 'react-native-elements';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -145,7 +146,8 @@ const Login = () => {
             if (result.isEmployee) {
                 dispatch(setIsEmployee(true));
             }
-            dispatch(setActiveScreen(result.isAdmin || result.isEmployee ? Routes.MANAGEMENT : (result.isVisitorUser ? Routes.VIDEOS_SECTION : Routes.MAIN_DASHBOARD)))
+            dispatch(setActiveScreen(result.isVisitorUser ? Routes.VIDEOS_SECTION : Routes.MAIN_DASHBOARD))
+            dispatch(setSelectedMobileSelection(result.isVisitorUser ? t('menu.videosList'): t('menu.main')));
         }
     }
 

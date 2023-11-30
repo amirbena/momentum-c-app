@@ -25,8 +25,11 @@ const FailurePopup = () => {
 const styles = StyleSheet.create({
     text: {
         marginTop: 70,
-        fontSize: 24,
-        textAlign: 'center'
+        fontSize: 20,
+        width: 220,
+        textAlign: 'center',
+        bottom: 20,
+        left: 50
     },
 });
 

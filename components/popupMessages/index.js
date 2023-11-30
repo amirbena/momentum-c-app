@@ -82,16 +82,15 @@ export const styles = StyleSheet.create({
   popupMessagesTitle: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 36,
-    fontStyle: 'normal',
-    fontWeight: '400'
+    fontSize: 24,
+    fontWeight: '500'
   },
   popupMessageDescripition: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 24,
-    fontStyle: 'normal',
+    fontSize: 16,
     fontWeight: '400',
+    marginTop: 20
   },
   linkPosition: {
     marginTop: 65,

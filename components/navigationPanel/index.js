@@ -1,22 +1,22 @@
-import { StyleSheet } from "react-native";
-import { View, TouchableOpacity } from "react-native";
-import { useDispatch } from "react-redux";
-import { setActiveScreen } from "../../redux/reducers/activeScreenReducer";
-import { MATAN_GUY_LINK, Routes } from "../../constants";
-import { useTranslation } from "react-i18next";
-import { setSelectedMobileSelection } from "../../redux/reducers/menuReducer";
-import { Linking } from "react-native";
-import { Image } from "react-native-elements";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { View, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
+import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
+import { MATAN_GUY_LINK, Routes } from '../../constants';
 
+const CustomBottomNavigation = () => {
 
-const NavigationPanel = () => {
-
+    const { selectedMobileSelection } = useSelector(state => state.menu);
+    const { index: activeScreen } = useSelector(state => state.activeScreen)
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
 
     const handleVideosScreen = () => {
         dispatch(setActiveScreen(Routes.VIDEOS_SECTION));
+        dispatch(setSelectedMobileSelection(t('menu.videosList')));
     }
 
     const navigateToNewProducts = () => {
@@ -26,12 +26,12 @@ const NavigationPanel = () => {
 
     const navigateToHomePage = () => {
         dispatch(setActiveScreen(Routes.MAIN_DASHBOARD));
-        dispatch(setSelectedMobileSelection('menu.main'));
+        dispatch(setSelectedMobileSelection(t('menu.main')));
     }
 
     const navigateToMessaging = () => {
         dispatch(setActiveScreen(Routes.MAIN_DASHBOARD));
-        dispatch(setSelectedMobileSelection('menu.messaging'));
+        dispatch(setSelectedMobileSelection(t('menu.messaging')));
     }
 
     const navigateToWhatsapp = () => {
@@ -40,47 +40,67 @@ const NavigationPanel = () => {
 
 
     return (
-        <View style={styles.panel}>
-            <View >
-                <TouchableOpacity onPress={handleVideosScreen} >
-                    <Image source={require('../../images/videosScreen.png')} />
-                </TouchableOpacity>
-            </View>
-            <View >
-                <TouchableOpacity onPress={navigateToNewProducts} >
-                    <Image source={require('../../images/newProducts.png')} />
-                </TouchableOpacity>
-            </View>
-            <View >
-                <TouchableOpacity onPress={navigateToHomePage} >
-                    <Image source={require('../../images/homePage.png')} />
-                </TouchableOpacity>
-            </View>
-            <View >
-                <TouchableOpacity onPress={navigateToMessaging} >
-                    <Image source={require('../../images/messaging.png')} />
-                </TouchableOpacity>
-            </View>
-            <View >
-                <TouchableOpacity onPress={navigateToWhatsapp} >
-                    <Image source={require('../../images/WhatsappPanel.png')} />
-                </TouchableOpacity>
-            </View>
+        <View style={[styles.container,{bottom: activeScreen === Routes.MAIN_DASHBOARD ? 322: 402 }]}>
+            <TouchableOpacity style={selectedMobileSelection === t('menu.videosList') ? styles.selectedTab : styles.tab} onPress={handleVideosScreen}>
+                <Image
+                    source={require('../../images/videosScreen.png')}
+                    style={styles.icon}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={selectedMobileSelection === t('menu.newProducts') ? styles.selectedTab : styles.tab} onPress={navigateToNewProducts}>
+                <Image
+                    source={require('../../images/newProducts.png')}
+                    style={styles.icon}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={selectedMobileSelection === t('menu.main') ? styles.selectedTab : styles.tab} onPress={navigateToHomePage}>
+                <Image
+                    source={require('../../images/homePage.png')}
+                    style={styles.icon}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={selectedMobileSelection === t('menu.messaging') ? styles.selectedTab : styles.tab} onPress={navigateToMessaging}>
+                <Image
+                    source={require('../../images/messaging.png')}
+                    style={styles.icon}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tab} onPress={navigateToWhatsapp}>
+                <Image
+                    source={require('../../images/WhatsappPanel.png')}
+                    style={styles.icon}
+                />
+            </TouchableOpacity>
 
-        </View >
+            {/* Add more tabs as needed */}
+        </View>
     );
-}
-
+};
 
 const styles = StyleSheet.create({
-    panel: {
-        alignSelf: 'center', // Align the item to the bottom
-        backgroundColor: "#13143A",
-        width: 300,
-        display: 'flex',
+    container: {
         flexDirection: 'row',
-        gap: 10
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: '#13143A',
+        height: 90
+    },
+    tab: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    selectedTab: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomWidth: 4,
+        borderBottomColor: '#fff',
+    },
+    icon: {
+        width: 30,
+        height: 30,
     }
-})
+});
 
-export default NavigationPanel;
+export default CustomBottomNavigation;

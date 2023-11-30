@@ -22,6 +22,7 @@ import HeaderText from './headerText';
 import { getMessages, getPopupMessages } from '../../redux/thunk/messagesThunk';
 import { sellsThunk } from '../../redux/thunk/sellsThunk';
 import { setFailureAuth } from '../../redux/reducers/noAuthPopupReducer';
+import NavigationPanel from '../../components/navigationPanel';
 
 
 const MainDashboard = () => {
@@ -40,15 +41,15 @@ const MainDashboard = () => {
         const bringAllItems = async () => {
             const accessToken = await getAccessToken(stateToken);
             setLocalAccessToken(accessToken);
-             await dispatch(defineUserThunk(accessToken));
-             await dispatch(getMessages(accessToken));
-             await dispatch(getPopupMessages(accessToken));
-             await dispatch(sellsThunk(accessToken))
-             if (failureAuth) {
-                 dispatch(setFailureAuth(false));
-                 dispatch(setActiveScreen(Routes.ENTRANCE));
-             }
-             dispatch(setIsLoading(false));
+            await dispatch(defineUserThunk(accessToken));
+            await dispatch(getMessages(accessToken));
+            await dispatch(getPopupMessages(accessToken));
+            await dispatch(sellsThunk(accessToken))
+            if (failureAuth) {
+                dispatch(setFailureAuth(false));
+                dispatch(setActiveScreen(Routes.ENTRANCE));
+            }
+            dispatch(setIsLoading(false));
         }
         bringAllItems();
 
@@ -68,13 +69,11 @@ const MainDashboard = () => {
             <View style={styles.mobileChecking}>
                 <HeaderText />
                 <View>
-                     {selectedMobileSelection === t('menu.main') ? <MainComponent /> : <></>}
+                    {selectedMobileSelection === t('menu.main') ? <MainComponent /> : <></>}
                     {selectedMobileSelection === t('menu.newProducts') ? <NewProducts /> : <></>}
                     {selectedMobileSelection === t('menu.messaging') ? <MessagingInbox /> : <></>}
                 </View>
 
-                  <PopupMessages />
-                <RealTimePopupUpdates />
             </View>
 
         </ImageBackground>

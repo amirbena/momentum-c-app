@@ -21,7 +21,7 @@ export const RealTimePopupUpdates = () => {
             updatePopup(accessToken, _id);
             dispatch(closeNotificationPopup());
         }
-    }, [isPopupQueueOpen, _id, dispatch, tokenAccessToken]);
+    }, [isPopupQueueOpen, tokenAccessToken]);
 
     const handleLink = () => {
         if (!link) return null;
@@ -60,8 +60,11 @@ export const RealTimePopupUpdates = () => {
             );
         };
 
+        const handleClosePopup = () => dispatch(closeNotificationPopup());
+
+
         return (
-            <Popup visible={isPopupQueueOpen} onClose={() =>{}} showClose>
+            <Popup visible={isPopupQueueOpen} onClose={handleClosePopup} showClose>
                 <View style={styles.popupMessages}>
                     <Text style={styles.popupMessagesTitle}>{title}</Text>
                     <Text style={styles.popupMessageDescripition}>{description}</Text>
