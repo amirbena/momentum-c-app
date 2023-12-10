@@ -260,7 +260,7 @@ export const styles = StyleSheet.create({
     },
     boxError: {
         width: 352,
-        height: 605,
+        height: 615,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -308,23 +308,25 @@ export const styles = StyleSheet.create({
     },
     errorMessage: {
         color: 'brown',
-        top: -20,
-        marginBottom: -10
+        top: -25,
+        marginBottom: -20
     },
     checkboxContainer: {
         marginTop: -16,
         alignSelf: 'center',
-        direction: 'rtl'
+        direction: 'lrt',
     },
     firstCheckbox: {
         position: 'relative',
         top: -86,
-        flexDirection: 'row',
+        flexDirection: 'row-reverse',
+        direction: 'rtl',
         alignItems: 'center',
-        right: 12
+        right: 2
     },
     checkboxLabel: {
         flexDirection: 'row',
+        direction: 'rtl',
         alignItems: 'center',
     },
     checkboxInput: {
@@ -367,9 +369,9 @@ export const styles = StyleSheet.create({
     },
     secondCheckbox: {
         position: 'relative',
-        left: 10,
+        left: -10,
         top: -104,
-        flexDirection: 'row',
+        flexDirection: 'row-reverse',
         alignItems: 'center',
     },
     confirmButton: {
@@ -380,7 +382,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: -85,
+        top: -105,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 9,
@@ -395,7 +397,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: -85,
+        top: -105,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 9,

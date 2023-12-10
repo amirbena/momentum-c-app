@@ -39,8 +39,8 @@ const NewProducts = () => {
 const styles = StyleSheet.create({
     newProductsPosition: {
         width: 358,
-        height: 527,
-        marginTop: 200,
+        height: 517,
+        marginTop: 190,
         bottom: 200,
         alignItems: 'center',
         justifyContent: 'center',

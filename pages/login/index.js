@@ -197,7 +197,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     box: {
         width: 352,
-        height: 315,
+        paddingBottom: 40,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -211,11 +211,11 @@ const styles = StyleSheet.create({
         color: 'brown',
         top: -20,
         marginBottom: -10,
-        left: 86
+        alignSelf: 'center'
     },
     boxError: {
         width: 352,
-        height: 335,
+        paddingBottom: 60,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
-        top: 20,
+        top: 10,
     },
     registerNavigateText: {
         color: 'white',
@@ -248,20 +248,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: -155,
-        justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
+        top: 25,
         padding: 9,
-        width: 300,
-        left: 25
+        width: 200,
     },
     forgotPassword: {
         color: '#FFF',
         fontSize: 14,
         fontWeight: '400',
         textDecorationLine: 'underline',
-        left: 115,
-        top: 15
+        alignSelf: 'center',
+        top: 10
     },
     confirmButtonDisabled: {
         borderRadius: 8,
@@ -271,12 +270,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: 45,
+        top: 25,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
         padding: 9,
-        width: 300,
-        left: 25
+        width: 200,
     },
 })
 

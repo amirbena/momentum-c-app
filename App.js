@@ -31,7 +31,7 @@ const RouterBuilder = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchToken = async () => {
       const accessToken = await getAccessToken(token);
       if (accessToken) {
@@ -41,7 +41,7 @@ const RouterBuilder = () => {
       }
     }
     fetchToken();
-  }, [token]);
+  }, [token]); */
 
 
 

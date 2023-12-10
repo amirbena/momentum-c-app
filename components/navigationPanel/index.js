@@ -40,7 +40,7 @@ const CustomBottomNavigation = () => {
 
 
     return (
-        <View style={[styles.container,{bottom: activeScreen === Routes.MAIN_DASHBOARD ? 322: 402 }]}>
+        <View style={[styles.container,{bottom: activeScreen === Routes.MAIN_DASHBOARD ? 342: 402 }]}>
             <TouchableOpacity style={selectedMobileSelection === t('menu.videosList') ? styles.selectedTab : styles.tab} onPress={handleVideosScreen}>
                 <Image
                     source={require('../../images/videosScreen.png')}

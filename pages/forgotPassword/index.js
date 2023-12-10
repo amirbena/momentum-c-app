@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: '400',
         lineHeight: 58,
-        marginTop: -90,
-        marginLeft: 14
+        marginTop: -110,
+        alignSelf: 'center'
     },
     forgotPasswordBox: {
         width: 328,
@@ -168,15 +168,15 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 2 },
         shadowRadius: 10,
         shadowOpacity: 1,
-        top: -50
+        top: 40
     },
     forgotPasswordLoginNavigate: {
         color: '#FFF',
         fontSize: 16,
         fontWeight: '400',
         textDecorationLine: 'underline',
-        marginTop: 10,
-        right: -280
+        marginTop: 30,
+        right: 20
     },
     previewText: {
         fontSize: 16,
