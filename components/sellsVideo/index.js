@@ -14,15 +14,14 @@ const SellsVideo = ({ open, setIsOpen, index }) => {
         return null;
     }
 
-    const slice = video.split('?')[1].split('&')[0].split('=')[1];
+    const videosParts = video.split('/')
+
+
+    const slice = videosParts[videosParts.length - 1];
 
     return (
         <Popup visible={open} onClose={setIsOpen}>
             <View style={styles.sellsVideo}>
-                {/*  <WebView
-                    style={styles.iframe}
-                    source={{ uri: video }}
-                /> */}
                 <YoutubePlayer
                     height={200}
                     width={280}
