@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "android-momentum",
+  "private_key_id": "d29c4146c2f60d308f96ab330ca2a53186a80f6a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDG76T9DmB0TtU0\nL8K94CzBQ2b6biQGTCZI5GztiBnFBndP61tspF+dtJ5X7Ufpvmq/jMi/ckvlbT1w\nrOMP7dUeZ28LFW7ypeHsn8kZRNMPMnmc7c59P3VypVAOxmAiZnEvAI+AvLXJexPB\nZJwFflwsn8fDu4cA972TJMotIIA5s5+ZhO7O9SBoEbZvTwFUynzROj/7qXNsnwAk\nPhf1q8tSmxUsjWbROniAVO0Xel86JWhzi6hvsCt8IpAc0s1lsd0YPlXsCRJ48OwM\ng7jfi11WWlL0U8Ovyy/45aPv2Obu4SYZjUK/gyMhibdpRpDycPW0vG8YBsouIbXG\nNVKw7lsVAgMBAAECggEAE0SHstjPH8S44qaTkodhXlCUa0H6rD9438t7/1+Uu1/+\nc1ek0bdz6VbilTqOogWG2kmc8en0juKPNlgQX+0VnK3A9A5d4hON97icJh3j4U9u\ntvPTcY8RZYq8X8n36q0IXliMDZh5dOu+RJdlgySzccEB/KOvljjofBVunYNN2Aix\nc9qFlqPMaUqCjrAFEoEPLcHy38Gln2r4nL6WmqtiDJzQuN+m8k5UiU4FxM9zQhzT\nAY9rJ2zXtEB72RmL4L1XTgmLC6SFAiqtvIWByvGNAL8kI2kgLfN8tgNGB7z2yvOE\n7sPsZzxYKIDDmQSDZUW9zRteVDUJSZvPnnpB+LnMsQKBgQDsdQyiV6D5mX9vZVFq\noja2voUcW95HWRu+CcWi6pbpgwTefYNHL1Av+v8ZHDWrGl7oFRBQodPaSTaPlldr\nXeHI853oHT+MeQ1fa7juOc7tYBe4j9egEMaMW0QcuykUxaRrCsxHJorJBZa9eytr\nw8j5LehfGfSZECwkZhvz+1GXWQKBgQDXYLmoO4CiatYevZSoUji4L72ac2N3Xwxx\nPc/7MYRy0hKUliPsIbZiREJTO2fejLSmd1lLjMRLgioWXHD6fV5NuGKEi/8oSImO\nEmobHAM4Wpj0wG23nLE/oraZaips6fc5pQhH6s/DZiQOCzhtzntWVFPK9pMwtTdR\ncHp37+EmHQKBgQCPvwSEOKNauY74CG77VUvPwninac3yL+CmocgtJ1HA+W5fV4wU\nHVYxJPQprrWNpAVoL03wxsBEpldt6OaSFcup3zfyoL0+R2TyykjtQeVi9xTUlVVv\nMGOTdfQtRzZNM22lyTWwV2TtmeEupY8a/zXRDbCDCANjfapoIk8B/pl2WQKBgQDO\nKbNtuw9l6RhvMo+zE4lhnalDyAJFSMFzQHTugTbEZhwNCS73oEmiBK7sVygVGuDt\nm77pF6Tqln1NDE3FKO51PPNo501mNREe4reYnZbjga16UxxzLtVoEYvyjHJx8P+K\nuVOU68rWwtXub4UjbwwW1f+jf6XjcQOzvBQu7Hq7bQKBgQDqRIjlpruM1Og3jfgt\ndQJR8KOIloJsOKpE0DEPJqiK1IjgLjbRoNvehCTKWEMCqJB53CjXijr2yuERoezy\nP10mwGB9QD7xzlJAz7nTxN/63nNUEHeEVW375Rez42fkmENIo5Gx5gSq8Q+1Nr3y\neavKNAkS/xjo7PwLwBWtjhGwoA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "momentumc@android-momentum.iam.gserviceaccount.com",
+  "client_id": "118096082599460923176",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/momentumc%40android-momentum.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "momentum-c-app",
+    "name": "Momentum C- Clients Application",
     "slug": "momentumc",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./images/smallLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./images/smallLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -20,19 +20,26 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./images/smallLogo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.amirbena12049818.momentumc"
+      "package": "com.amirbena12049818.momentumc",
+      "versionCode": 3
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./images/smallLogo.png"
     },
     "extra": {
       "eas": {
         "projectId": "1c4d370d-8df8-4422-a0ff-dcb2edc9077b"
       }
     },
-    "owner": "amirbena12049818"
+    "owner": "amirbena12049818",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1c4d370d-8df8-4422-a0ff-dcb2edc9077b"
+    }
   }
 }
