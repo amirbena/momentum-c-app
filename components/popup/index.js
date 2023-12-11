@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     bottom: 30,
     width: 30,
     height: 30,
-    color: 'red'
   },
 
   content: {

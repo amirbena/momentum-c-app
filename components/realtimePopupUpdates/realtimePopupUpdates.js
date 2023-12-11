@@ -14,13 +14,16 @@ export const RealTimePopupUpdates = () => {
     const { accessToken: tokenAccessToken } = useSelector(state => state.token);
     const dispatch = useDispatch();
 
-    useEffect(async () => {
-
-        const accessToken = await getAccessToken(tokenAccessToken);
-        if (isPopupQueueOpen) {
-            updatePopup(accessToken, _id);
-            dispatch(closeNotificationPopup());
+    useEffect(() => {
+        const fetchAccessToken = async()=>{
+            const accessToken = await getAccessToken(tokenAccessToken);
+            if (isPopupQueueOpen) {
+                updatePopup(accessToken, _id);
+                dispatch(closeNotificationPopup());
+            }
         }
+        fetchAccessToken();
+        return () => {}
     }, [isPopupQueueOpen, tokenAccessToken]);
 
     const handleLink = () => {

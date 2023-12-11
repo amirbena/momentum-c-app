@@ -13,6 +13,7 @@ const EntranceScreen = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
+        return () => {}
     }, []);
 
     const navigateToLogin = () => {

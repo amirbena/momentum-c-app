@@ -8,7 +8,6 @@ import { setFailureAuth, setNoAuthPopupOpen } from "../reducers/noAuthPopupReduc
 
 export const getMessages = (accessToken) => async (dispatch, getState) => {
     try {
-        dispatch(setIsLoading(true));
         const result = await showAllUserHistoryRequest(accessToken);
         dispatch(setMessagesHistory(result));
         return result;

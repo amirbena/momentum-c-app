@@ -56,7 +56,7 @@ export const initialState = {
     },
     menu: {
         isOpen: false,
-        selectedMobileSelection: 'מוצרים חדשים'
+        selectedMobileSelection: "",
     },
     popup: {
         popupOpen: true

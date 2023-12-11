@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ImageBackground, Keyboard, StyleSheet, View } from "react-native";
+import { ImageBackground, Keyboard, StyleSheet, View, TouchableOpacity } from "react-native";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveScreen } from "../../redux/reducers/activeScreenReducer";
@@ -7,7 +7,7 @@ import { setIsLoading } from "../../redux/reducers/isLoadingReducer";
 import { initForgotPasswordData, setEmail } from "../../redux/reducers/forgotPasswordReducer";
 import { forgotPasswordThunk } from '../../redux/thunk/forgotPasswordThunk';
 import { HttpStatusCode } from "axios";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput } from "react-native-gesture-handler";
 import { Text } from "react-native-elements";
 import { ENGLISH_FULL_LANGUAGE, HEBREW, HEBREW_FULL_LANGUAGE, Routes } from "../../constants";
 
@@ -47,6 +47,7 @@ const ForgotPassword = () => {
             [HttpStatusCode.InternalServerError]: t('forgotPassword.internalServerError')
         }
         setLocalResults({ validResponse: validResponseCode === HttpStatusCode.Ok, responseText: results[validResponseCode] })
+        return () => { };
     }, [validResponseCode, t])
 
     const validateInput = () => {
@@ -75,6 +76,7 @@ const ForgotPassword = () => {
 
     const handleClick = async () => {
         dispatch(setIsLoading(true));
+        Keyboard.dismiss();
         setShowError(true);
         const result = await dispatch(forgotPasswordThunk({ email, language: i18n.language === HEBREW ? HEBREW_FULL_LANGUAGE : ENGLISH_FULL_LANGUAGE }));
         dispatch(setIsLoading(false));
@@ -109,10 +111,8 @@ const ForgotPassword = () => {
             <View style={styles.forgotPasswordBox}>
                 <Text style={styles.forgotPasswordLoginNavigate} onPress={navigateToLogin}>{t("forgotPassword.navigateToLogin")}</Text>
                 <Text style={styles.forgotPasswordHeaderText}>{t('forgotPassword.header')}</Text>
-                <View style={{ width: 50, height: 100, left: -5 }}>
-                    <TouchableOpacity onPress={Keyboard.dismiss}>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={{ top: -10, left: 0, width: 100, height: 100 }} onPress={Keyboard.dismiss}>
+                </TouchableOpacity>
 
                 <Text style={styles.previewText}>
                     {t('forgotPassword.previewTextPart1')}

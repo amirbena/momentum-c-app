@@ -57,7 +57,7 @@ export const convertHourAndDateToDateObject = (date, hour) => {
 
 
 export const getOrigin = () => {
-    const origin = process.env.PRODUCTION_URL || "http://192.168.1.32:3031";
+    const origin = process.env.PRODUCTION_URL || "http://172.20.208.1:3031";
     return origin;
 }
 

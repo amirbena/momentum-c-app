@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './menu.css';
 import { useTranslation } from 'react-i18next';
@@ -22,11 +22,16 @@ const Menu = ({ menuClosedClass = "", menuItemClass = "", menuShowClass = "" }) 
     const { isAdmin, accessToken: stateToken } = useSelector(state => state.token);
     const [accessToken, setAccessToken] = useState("");
 
-    useEffect(async()=>{
-        const result = await getAccessToken(stateToken);
-        setAccessToken(result)
-    },[])
-    
+    useEffect(() => {
+
+        const accessToken = async () => {
+            const result = await getAccessToken(stateToken);
+            setAccessToken(result)
+        }
+        accessToken();
+        return () => { }
+    }, [])
+
 
 
 
@@ -46,7 +51,7 @@ const Menu = ({ menuClosedClass = "", menuItemClass = "", menuShowClass = "" }) 
     const convertLanguage = async () => {
         const language = i18n.language === HEBREW ? ENGLISH : HEBREW;
         i18n.changeLanguage(language);
-        await AsyncStorage.setItem(LANGUAGE_KEY,language);
+        await AsyncStorage.setItem(LANGUAGE_KEY, language);
     }
 
 

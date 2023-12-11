@@ -45,6 +45,7 @@ const Register = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
+        return () => {}
     }, []);
 
     useEffect(() => {
@@ -113,7 +114,8 @@ const Register = () => {
         return options[id]();
     };
 
-    const handleBlur = (id, value, input) => {
+    const handleBlur = (id, e, input) => {
+        const { value } = e._dispatchInstances.memoizedProps;
         const { isValid, text } = validateInput(id, value);
         setInputErrors(prevInputErrors => ({
             ...prevInputErrors,
@@ -169,6 +171,7 @@ const Register = () => {
 
     const handleClick = async () => {
         dispatch(setIsLoading(true));
+        Keyboard.dismiss();
         const result = await dispatch(userRegisterThunk({ fullName: name, email, password, phoneNumber: phone }));
         if (result) {
             initData();
@@ -198,7 +201,7 @@ const Register = () => {
                                 style={styles.input}
                                 value={value}
                                 onChangeText={text => setLocalFormItem(text, id)}
-                                onBlur={(e) => handleBlur(id, e.nativeEvent.text)}
+                                onBlur={(e) => handleBlur(id, e)}
                                 placeholder={t(`register.${placeholder}Placeholder`)}
                                 keyboardType={type === 'email' ? 'email-address' : id === REGISTER_KEYS.PHONE ? 'phone-pad' : 'default'}
                                 secureTextEntry={type === 'password'}
@@ -309,7 +312,7 @@ export const styles = StyleSheet.create({
     errorMessage: {
         color: 'brown',
         top: -25,
-        marginBottom: -20
+        marginBottom: -10
     },
     checkboxContainer: {
         marginTop: -16,
@@ -361,7 +364,6 @@ export const styles = StyleSheet.create({
     },
     legalText: {
         color: '#FFF',
-
         fontSize: 16,
         textDecorationLine: 'underline',
         position: 'relative',

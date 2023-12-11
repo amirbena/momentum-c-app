@@ -49,7 +49,6 @@ export const defineUser = async accessToken => {
         const result = await axios.post(`${origin}/users/define-token`, { accessToken });
         return result.data;
     } catch (ex) {
-
         return {
             isAdmin: false,
             isRegularUser: false
