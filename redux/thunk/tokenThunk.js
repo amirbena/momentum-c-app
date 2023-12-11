@@ -12,6 +12,7 @@ export const defineUserThunk = accessToken => async (dispatch, getState) => {
         dispatch(setUserType({ isAdmin, isRegularUser }))
         return { isAdmin, isRegularUser };
     } catch (error) {
+        dispatch(setIsLoading(false));
         if (error.response?.status === HttpStatusCode.Unauthorized) {
             dispatch(setNoAuthPopupOpen(true));
             return;

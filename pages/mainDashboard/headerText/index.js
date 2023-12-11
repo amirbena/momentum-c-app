@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         direction: 'rtl',
         gap: 80,
-        top:-40
+        top: -40
     },
     nameText: {
         fontSize: 24,
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
         height: 35,
         flexShrink: 0,
         top: -5,
-        left: -32
+        left: 362
     },
     logoutPosition: {
-        right: -33,
+        right: 352,
     }
 });
 

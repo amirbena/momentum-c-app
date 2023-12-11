@@ -8,11 +8,13 @@ import { setIsLoading } from "../../redux/reducers/isLoadingReducer";
 import { userLoginThunk } from '../../redux/thunk/loginThunk';
 import { setIsAdmin, setIsEmployee } from '../../redux/reducers/tokenReducer';
 import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
-import { ImageBackground, Keyboard, StyleSheet, TouchableHighlight, View } from 'react-native';
+import { ImageBackground, Keyboard, StyleSheet, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import { styles as registerStyles } from '../register/register';
 import { Button, Image, Text } from 'react-native-elements';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { TextInput} from 'react-native-gesture-handler';
 import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
+import { validateEmail } from '../../utils';
+
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -43,6 +45,7 @@ const Login = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
+        return () => { }
     }, []);
 
 
@@ -54,10 +57,10 @@ const Login = () => {
             [HttpStatusCode.Ok]: t('login.okMessage')
         }
         setLocalResults({ validResponse: validResponseCode === HttpStatusCode.Ok, responseText: results[validResponseCode] })
+        return () => { }
     }, [validResponseCode, t])
 
-    const setLoginItem = e => {
-        const { id, value } = e.target;
+    const setLoginItem = (id, value) => {
         dispatch(setLoginShowError(false));
         dispatch(setLoginUser([id, value]));
     }
@@ -88,7 +91,8 @@ const Login = () => {
         return options[id]();
     }
 
-    const handleBlur = (id, value) => {
+    const handleBlur = (id, e) => {
+        const { value } = e._dispatchInstances.memoizedProps;
         const { isValid, text } = validateInput(id, value);
         setInputErrors(inputErrors => ({
             ...inputErrors,
@@ -136,6 +140,7 @@ const Login = () => {
 
 
     const handleClick = async () => {
+        Keyboard.dismiss();
         dispatch(setIsLoading(true));
         const result = await dispatch(userLoginThunk({ email, password }));
         if (result) {
@@ -147,7 +152,7 @@ const Login = () => {
                 dispatch(setIsEmployee(true));
             }
             dispatch(setActiveScreen(result.isVisitorUser ? Routes.VIDEOS_SECTION : Routes.MAIN_DASHBOARD))
-            dispatch(setSelectedMobileSelection(result.isVisitorUser ? t('menu.videosList'): t('menu.main')));
+            dispatch(setSelectedMobileSelection(result.isVisitorUser ? t('menu.videosList') : t('menu.main')));
         }
     }
 
@@ -160,7 +165,11 @@ const Login = () => {
             <Image source={require("../../images/person.png")} style={registerStyles.icon} />
             <View style={showError ? styles.boxError : styles.box}>
                 <Text style={registerStyles.boxHeader}>{t('login.header')}</Text>
-                <Text onPress={navigateToRegister} style={styles.registerNavigateText}>{t('register.navigateToLogin')}</Text>                    
+                <TouchableOpacity style={styles.registerNavigate} onPress={navigateToRegister}>
+                    <Text style={styles.registerNavigateText}>{t('register.navigateToLogin')}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ top: -100, left: 0, width: 100, height: 100 }} onPress={Keyboard.dismiss}>
+                </TouchableOpacity>
                 <View style={styles.formLayout}>
                     {inputs.map(({ id, placeholder, value, type }) => (
                         <>
@@ -169,7 +178,7 @@ const Login = () => {
                                     style={registerStyles.input}
                                     value={value}
                                     onChangeText={(text) => setLoginItem(id, text)}
-                                    onBlur={e => handleBlur(id, e.nativeEvent.text)}
+                                    onBlur={e => handleBlur(id, e)}
                                     placeholder={t(`login.${placeholder}Placeholder`)}
                                     secureTextEntry={type === 'password'}
                                 />
@@ -179,7 +188,10 @@ const Login = () => {
                     ))}
                 </View>
 
-                <Text onPress={navigateToForgotPassword} style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
+                <TouchableOpacity style={styles.forgotPasswordLocation} onPress={navigateToForgotPassword}>
+                    <Text style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity
                     style={enabledButton ? styles.confirmButton : styles.confirmButtonDisabled}
                     onPress={handleClick}
@@ -197,7 +209,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     box: {
         width: 352,
-        height: 315,
+        paddingBottom: 10,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -211,11 +223,11 @@ const styles = StyleSheet.create({
         color: 'brown',
         top: -20,
         marginBottom: -10,
-        left: 86
+        alignSelf: 'center'
     },
     boxError: {
         width: 352,
-        height: 335,
+        paddingBottom: 20,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -229,16 +241,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
-        top: 20,
+        top: -80,
     },
     registerNavigateText: {
         color: 'white',
         textDecorationLine: 'underline',
-        textAlign: 'right',
         color: 'white',
         fontSize: 16,
-        right: 25,
-        top: -30,
+
+    },
+    registerNavigate: {
+        top: -40,
+        left: 280,
+        width: 50,
     },
     confirmButton: {
         borderRadius: 8,
@@ -248,20 +263,21 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: -155,
-        justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
+        top: -50,
         padding: 9,
-        width: 300,
-        left: 25
+        width: 200,
     },
     forgotPassword: {
         color: '#FFF',
         fontSize: 14,
         fontWeight: '400',
         textDecorationLine: 'underline',
-        left: 115,
-        top: 15
+    },
+    forgotPasswordLocation: {
+        alignItems: 'center',
+        top: -80
     },
     confirmButtonDisabled: {
         borderRadius: 8,
@@ -271,12 +287,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         position: 'relative',
-        top: 45,
+        top: -50,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
         padding: 9,
-        width: 300,
-        left: 25
+        width: 200,
+    },
+    confirmErrorMessage: {
+        color: '#DC143C',
+        fontSize: 16,
+        width: 350,
+        textAlign: 'center',
+        alignSelf: 'center',
+        top: -20,
     },
 })
 

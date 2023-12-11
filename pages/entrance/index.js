@@ -13,6 +13,7 @@ const EntranceScreen = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
+        return () => {}
     }, []);
 
     const navigateToLogin = () => {
@@ -75,18 +76,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        marginLeft: 58,
-        marginTop:15
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop:10
     },
     buttonText2: {
         color: '#FFF',
         fontSize: 20,
         fontWeight: '400',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        marginLeft: 64,
-        marginTop: 15
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop: 10
     }
 });
 

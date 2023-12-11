@@ -26,6 +26,7 @@ export const RequireAuth = ({ children }) => {
       }
     }
     checkAuthentication();
+    return () => { }
 
   }, [isRegularUser]);
 

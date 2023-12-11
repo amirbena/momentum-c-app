@@ -6,7 +6,7 @@ import store from './redux';
 import i18n from './translation/i18n';
 import EntranceScreen from './pages/entrance';
 import { ACCESS_TOKEN_KEY, BLUE_MOMENTUM, Routes as RoutesContants } from './constants';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import { setActiveScreen } from './redux/reducers/activeScreenReducer';
 import Register from './pages/register/register';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -22,10 +22,12 @@ import NavigationPanel from "./components/navigationPanel";
 import PopupMessages from "./components/popupMessages";
 import { RealTimePopupUpdates } from "./components/realtimePopupUpdates/realtimePopupUpdates";
 import FailurePopup from "./components/failurePopup";
+import { setSelectedMobileSelection } from "./redux/reducers/menuReducer";
 
 const RouterBuilder = () => {
   const { isLoading } = useSelector((state) => state.isLoading);
   const { accessToken: token } = useSelector((state) => state.token);
+  const { t } = useTranslation();
 
   const { index } = useSelector(state => state.activeScreen);
 
@@ -35,12 +37,14 @@ const RouterBuilder = () => {
     const fetchToken = async () => {
       const accessToken = await getAccessToken(token);
       if (accessToken) {
-        dispatch(setActiveScreen(RoutesContants.MAIN_DASHBOARD))
+        dispatch(setActiveScreen(RoutesContants.MAIN_DASHBOARD));
+        dispatch(setSelectedMobileSelection(t('menu.main')))
       } else {
         dispatch(setActiveScreen(RoutesContants.ENTRANCE))
       }
     }
     fetchToken();
+    return () => { };
   }, [token]);
 
 

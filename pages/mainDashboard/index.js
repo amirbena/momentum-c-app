@@ -52,6 +52,8 @@ const MainDashboard = () => {
             dispatch(setIsLoading(false));
         }
         bringAllItems();
+        dispatch(setIsLoading(false));
+        return () => { }
 
     }, [])
 
