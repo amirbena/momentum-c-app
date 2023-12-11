@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacityComponent } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacityComponent, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { getAccessToken } from '../../../utils';
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
         height: 35,
         flexShrink: 0,
         top: -5,
-        left: 362
+        left: Platform.OS === "android" ? 362 : 20
     },
     logoutPosition: {
-        right: 352,
+        right: Platform.OS === "android" ? 352 : 5,
     }
 });
 

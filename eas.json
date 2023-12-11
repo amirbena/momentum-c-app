@@ -11,13 +11,19 @@
       "distribution": "internal"
     },
     "production": {
-      "env":{
+      "env": {
         "PRODUCTION_URL": "https://d24t6wp40vweqf.cloudfront.net"
       },
       "autoIncrement": true
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "amir12061968@gmail.com",
+        "ascAppId": "6474138522",
+        "appleTeamId": "9R3GG9CNLB"
+      }
+    }
   }
 }
