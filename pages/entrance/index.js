@@ -13,7 +13,7 @@ const EntranceScreen = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
-        return () => {}
+        return () => { }
     }, []);
 
     const navigateToLogin = () => {
@@ -36,7 +36,7 @@ const EntranceScreen = () => {
                         <Text style={styles.buttonText}>{t('entrance.login')}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={navigateToRegister}>
-                        <Text style={styles.buttonText2}>{t('entrance.register')}</Text>
+                        <Text style={styles.buttonText}>{t('entrance.register')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -70,17 +70,9 @@ const styles = StyleSheet.create({
         shadowColor: 'rgba(0, 0, 0, 0.25)',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 4,
+
     },
     buttonText: {
-        color: '#FFF',
-        fontSize: 20,
-        fontWeight: '400',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        marginTop:10
-    },
-    buttonText2: {
         color: '#FFF',
         fontSize: 20,
         fontWeight: '400',

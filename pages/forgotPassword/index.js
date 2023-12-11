@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ImageBackground, Keyboard, StyleSheet, View, TouchableOpacity } from "react-native";
+import { ImageBackground, Keyboard, StyleSheet, View, TouchableOpacity, Platform } from "react-native";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveScreen } from "../../redux/reducers/activeScreenReducer";
@@ -109,7 +109,10 @@ const ForgotPassword = () => {
             style={styles.forgotPasswordPage}
         >
             <View style={styles.forgotPasswordBox}>
-                <Text style={styles.forgotPasswordLoginNavigate} onPress={navigateToLogin}>{t("forgotPassword.navigateToLogin")}</Text>
+                <TouchableOpacity onPress={navigateToLogin} style={styles.forgotPasswordLoginNavigatePosition}>
+                    <Text style={styles.forgotPasswordLoginNavigate}>{t("forgotPassword.navigateToLogin")}</Text>
+                </TouchableOpacity>
+
                 <Text style={styles.forgotPasswordHeaderText}>{t('forgotPassword.header')}</Text>
                 <TouchableOpacity style={{ top: -10, left: 0, width: 100, height: 100 }} onPress={Keyboard.dismiss}>
                 </TouchableOpacity>
@@ -175,15 +178,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '400',
         textDecorationLine: 'underline',
-        marginTop: 30,
-        right: 20
+    },
+    forgotPasswordLoginNavigatePosition: {
+        marginTop: Platform.OS === "android" ? 30 : 20,
+        right: Platform.OS === "android" ? 20 : -270
     },
     previewText: {
         fontSize: 16,
         fontWeight: '400',
         letterSpacing: 0,
         color: 'white',
-        marginTop: -30,
+        marginTop: Platform.OS === "android" ? -30 : -20,
         textAlign: 'center',
         width: 300,
         left: 14
@@ -191,7 +196,7 @@ const styles = StyleSheet.create({
     forgotPasswordFormLayout: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: Platform.OS === "android" ? 40 : 30,
     },
     emailInput: {
         backgroundColor: '#D9D9D9',
@@ -225,7 +230,7 @@ const styles = StyleSheet.create({
     errorMessage: {
         color: 'blue',
         top: -20,
-        marginBottom: -10
+        marginBottom: Platform.OS === "android" ? -10 : -15
     },
     confirmErrorMessage: {
         color: 'blue',

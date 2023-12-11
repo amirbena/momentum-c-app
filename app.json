@@ -24,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.amirbena12049818.momentumcapp",
-      "versionCode": 10
+      "versionCode": 12
     },
     "web": {
       "favicon": "./images/smallLogo.png"

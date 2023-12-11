@@ -2,7 +2,6 @@ import axios from 'axios';
 import { VIDEOS_SECTIONS } from '../constants';
 import { getOrigin } from '../utils';
 
-
 const origin = getOrigin();
 
 
@@ -17,10 +16,12 @@ export const registerUser = async (user) => {
 
 export const loginUser = async (userLogin) => {
     try {
+        console.log(`${origin}/users/login`)
         const result = await axios.post(`${origin}/users/login`, userLogin);
         return result.data;
 
     } catch (error) {
+        console.log("error", error);
         throw error;
     }
 }

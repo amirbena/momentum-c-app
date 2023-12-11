@@ -8,10 +8,10 @@ import { setIsLoading } from "../../redux/reducers/isLoadingReducer";
 import { userLoginThunk } from '../../redux/thunk/loginThunk';
 import { setIsAdmin, setIsEmployee } from '../../redux/reducers/tokenReducer';
 import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
-import { ImageBackground, Keyboard, StyleSheet, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, Keyboard, Platform, StyleSheet, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import { styles as registerStyles } from '../register/register';
 import { Button, Image, Text } from 'react-native-elements';
-import { TextInput} from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-gesture-handler';
 import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
 import { validateEmail } from '../../utils';
 
@@ -165,7 +165,7 @@ const Login = () => {
             <Image source={require("../../images/person.png")} style={registerStyles.icon} />
             <View style={showError ? styles.boxError : styles.box}>
                 <Text style={registerStyles.boxHeader}>{t('login.header')}</Text>
-                <TouchableOpacity style={styles.registerNavigate} onPress={navigateToRegister}>
+                <TouchableOpacity style={Platform.OS === "android" ? styles.registerNavigate : styles.registerNavigateIos} onPress={navigateToRegister}>
                     <Text style={styles.registerNavigateText}>{t('register.navigateToLogin')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{ top: -100, left: 0, width: 100, height: 100 }} onPress={Keyboard.dismiss}>
@@ -209,7 +209,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     box: {
         width: 352,
-        paddingBottom: 10,
+        paddingBottom: Platform.OS === "ios" ? -10 : 10,
         flexShrink: 0,
         borderRadius: 8,
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
@@ -253,6 +253,11 @@ const styles = StyleSheet.create({
     registerNavigate: {
         top: -40,
         left: 280,
+        width: 50,
+    },
+    registerNavigateIos: {
+        top: -40,
+        left: 290,
         width: 50,
     },
     confirmButton: {

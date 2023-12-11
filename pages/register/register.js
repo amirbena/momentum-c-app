@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, ImageBackground, Text, TextInput, TouchableOpacity, StyleSheet, Image, KeyboardAvoidingView, Keyboard, Linking, } from 'react-native';
+import { View, ImageBackground, Text, TextInput, TouchableOpacity, StyleSheet, Image, KeyboardAvoidingView, Keyboard, Linking, Platform, } from 'react-native';
 import icon from '../../images/person.png';
 import { HEBREW, MOMENTUM_C_LEGAL, REGISTER_KEYS, Routes } from '../../constants';
 import { useTranslation } from 'react-i18next';
@@ -45,7 +45,7 @@ const Register = () => {
 
     useEffect(() => {
         dispatch(setIsLoading(false));
-        return () => {}
+        return () => { }
     }, []);
 
     useEffect(() => {
@@ -323,7 +323,7 @@ export const styles = StyleSheet.create({
         position: 'relative',
         top: -86,
         flexDirection: 'row-reverse',
-        direction: 'rtl',
+        direction: Platform.OS === "android" ? 'rtl' : 'ltr',
         alignItems: 'center',
         right: 2
     },

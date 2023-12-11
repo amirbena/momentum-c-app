@@ -13,7 +13,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { getAccessToken } from "./utils";
 import Spinner from "react-native-loading-spinner-overlay";
 import Login from "./pages/login";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import ForgotPassword from "./pages/forgotPassword";
 import MainDashboard from "./pages/mainDashboard";
 import Videos from "./pages/videos";
