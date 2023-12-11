@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedMobileSelection } from '../../redux/reducers/menuReducer';
 import { setActiveScreen } from '../../redux/reducers/activeScreenReducer';
@@ -40,7 +40,7 @@ const CustomBottomNavigation = () => {
 
 
     return (
-        <View style={[styles.container,{bottom: activeScreen === Routes.MAIN_DASHBOARD ? 342: 402 }]}>
+        <View style={[styles.container, { bottom: activeScreen === Routes.MAIN_DASHBOARD ? Platform.OS === "android" ? 342 : 322 : 402  }]}>
             <TouchableOpacity style={selectedMobileSelection === t('menu.videosList') ? styles.selectedTab : styles.tab} onPress={handleVideosScreen}>
                 <Image
                     source={require('../../images/videosScreen.png')}
