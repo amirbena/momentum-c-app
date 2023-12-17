@@ -13,6 +13,7 @@ export const LOGIN_TYPES = {
 export const loginReducer = (state = initialState.login, action) => {
     switch (action.type) {
         case LOGIN_TYPES.setLoginUser: {
+            if (!action.payload || !action.payload.length) return state;
             const [key, value] = action.payload;
             return {
                 ...state,

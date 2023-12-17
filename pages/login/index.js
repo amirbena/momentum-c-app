@@ -59,9 +59,10 @@ const Login = () => {
     }, [validResponseCode, t])
 
     const setLoginItem = (id, value) => {
+        const loginUserItem = [id, value]
         if (!id) return "";
         dispatch(setLoginShowError(false));
-        dispatch(setLoginUser([id, value]));
+        dispatch(setLoginUser(loginUserItem));
     }
 
     const validateInput = (id, value) => {
