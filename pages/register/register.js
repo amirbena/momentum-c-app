@@ -58,6 +58,7 @@ const Register = () => {
     };
 
     const setLocalFormItem = (value, id) => {
+        
         dispatch(setRegisterShowError(false));
         dispatch(setFormItem([id, value]));
     };

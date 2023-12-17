@@ -22,8 +22,6 @@ const Login = () => {
 
     const loginState = useSelector(state => state.login);
 
-    const { isAdmin } = useSelector(state => state.token);
-
     const { email, password, validResponseCode, showError } = loginState;
     const [inputErrors, setInputErrors] = useState({
         email: false,
@@ -61,6 +59,7 @@ const Login = () => {
     }, [validResponseCode, t])
 
     const setLoginItem = (id, value) => {
+        if (!id) return "";
         dispatch(setLoginShowError(false));
         dispatch(setLoginUser([id, value]));
     }
@@ -92,6 +91,7 @@ const Login = () => {
     }
 
     const handleBlur = (id, e) => {
+        if (!id) return;
         const { value } = e._dispatchInstances.memoizedProps;
         const { isValid, text } = validateInput(id, value);
         setInputErrors(inputErrors => ({
@@ -175,6 +175,7 @@ const Login = () => {
                         <>
                             <View key={id}>
                                 <TextInput
+                                    key={`${id}1`}
                                     style={registerStyles.input}
                                     value={value}
                                     onChangeText={(text) => setLoginItem(id, text)}
@@ -182,7 +183,7 @@ const Login = () => {
                                     placeholder={t(`login.${placeholder}Placeholder`)}
                                     secureTextEntry={type === 'password'}
                                 />
-                                {inputErrors[id] && <Text style={styles.errorMessage}>{inputErrorTexts[id]}</Text>}
+                                {inputErrors[id] && <Text key={`${id}2`} style={styles.errorMessage}>{inputErrorTexts[id]}</Text>}
                             </View>
                         </>
                     ))}
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.10)',
         shadowColor: 'rgba(0, 0, 0, 0.10)',
         shadowOffset: { width: 2, height: 2 },
-        shadowOpacity: 0.10,
+        shadowOpacity: 0.1,
         shadowRadius: 10,
         marginTop: 30,
     },

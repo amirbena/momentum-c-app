@@ -12,7 +12,7 @@ const BlueSquare = ({ children, style }) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 16,
-    backgroundColor: 'rgba(44,45,111,0.6)',  
+    backgroundColor: '#2c2d6f',  
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

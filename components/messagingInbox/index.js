@@ -11,7 +11,9 @@ const MessagingInbox = () => {
   const { messagesHistory } = useSelector(state => state.messages);
   const dispatch = useDispatch();
 
-  const handleSelectMessage = (id) => {
+  const handleSelectMessage = (message) => {
+    if (!message) return;
+    const id = message._id;
     dispatch(selectItemToMessagingPopup(id));
   };
 
@@ -22,7 +24,7 @@ const MessagingInbox = () => {
       <ScrollView style={styles.messagingScrollInboxPosition} horizontal={false}>
         {messagesHistory.map((message, index) => (
           <View style={[styles.messagingSection, { backgroundColor: index % 2 === 0 ? '#13143A' : '#1E2052' }]}>
-            <TouchableOpacity key={message._id} onPress={() => handleSelectMessage(message._id)}>
+            <TouchableOpacity key={message._id} onPress={() => handleSelectMessage(message)}>
               <Text style={styles.messagingInboxParagraph}>{message.title}</Text>
             </TouchableOpacity>
           </View>
