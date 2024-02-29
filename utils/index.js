@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ACCESS_TOKEN_KEY } from "../constants";
+import Constants from 'expo-constants';
 
 export const validateEmail = (input) => {
     // Regular expression for basic email validation
@@ -57,7 +58,7 @@ export const convertHourAndDateToDateObject = (date, hour) => {
 
 
 export const getOrigin = () => {
-    const origin = process.env.PRODUCTION_URL || "https://d24t6wp40vweqf.cloudfront.net";
+    const origin = Constants.expoConfig.extra.PRODUCTION_URL || "https://d24t6wp40vweqf.cloudfront.net";
     return origin;
 }
 
