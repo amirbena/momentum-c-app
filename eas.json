@@ -11,6 +11,9 @@
       "distribution": "internal"
     },
     "production": {
+      "env": {
+        "PRODUCTION_URL": "https://d24t6wp40vweqf.cloudfront.net"
+      },
       "autoIncrement": true
     }
   },

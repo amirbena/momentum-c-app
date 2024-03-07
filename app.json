@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Momentum C- Clients Application",
-    "slug": "momentumcapp",
+    "slug": "momentum-c",
     "version": "2.0.1",
     "orientation": "portrait",
     "icon": "./images/smallLogo.png",
@@ -17,20 +17,20 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.amirbena12049818.momentumcapp",
-      "buildNumber": "5"
+      "buildNumber": "6"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./images/smallLogo.png",
         "backgroundColor": "#fff"
       },
-      "package": "com.amirbena12049818.momentumcapp",
+      "package": "com.amirbena1204.momentumapex",
       "versionCode": 17
     },
     "web": {
       "favicon": "./images/smallLogo.png"
     },
-    "owner": "amirbena12049818",
+    "owner": "amirbena1204",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -39,7 +39,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "1276d4e6-cfc0-46e9-8282-bc8453dc5b4a"
+        "projectId": "184128c7-7812-44d5-91bb-56629d8f4273"
       }
     }
   }
